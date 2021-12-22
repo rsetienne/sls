@@ -426,7 +426,7 @@ loglik_sls_q <- function(
 
     #Selecting the state I am interested in
     vm <- choose(k + missnumspec[clade], k) ^ -1
-    p_m  <- vm * q_t[t, (missnumspec[clade] + 1)]
+    p_m <- vm * q_t[t, (missnumspec[clade] + 1)]
 
     #Removing C and D effects from the LL
     loglik <- log(p_m) - sum(log(C)) - sum(log(D))
