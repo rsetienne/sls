@@ -441,12 +441,10 @@ loglik_sls_q <- function(
       }
 
       #Selecting the state I am interested in
-      vm <- choose(k + missnumspecs[clade], k) ^ -1
-      p_m  <- vm * q_t[t, (missnumspecs[clade] + 1)]
-
+      vm <- choose(k + missnumspecs[clade], k) ^ (-1)
+      p_m <- vm * q_t[t, (missnumspecs[clade] + 1)]
       #Removing sumvec1 and sumvec2 effects from the LL
       loglik <- log(p_m) - sum(log(sumvec1)) - sum(log(sumvec2))
-
       #Various checks
       loglik <- as.numeric(loglik)
       if (is.nan(loglik) | is.na(loglik)) {
@@ -466,8 +464,7 @@ loglik_sls_q <- function(
     n_max = n_max,
     n_0 = n_0
   )
-
-  # total_loglik <- sum(logliks) - log(pc)
+  #total_loglik <- sum(logliks) - log(pc)
   total_loglik <- log(sum(exp(logliks_vec))) - log(pc)
   total_loglik <- as.numeric(total_loglik)
   if (is.nan(total_loglik) | is.na(total_loglik)) {
